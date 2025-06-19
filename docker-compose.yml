@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  get-mcp-keys-claude:
+    image: claude-mcp-authenticated:latest  # Use committed image
+    container_name: claude-get-mcp-keys
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./server.js:/app/server.js
+      - ~/.ssh:/root/.ssh:ro
+    restart: unless-stopped
